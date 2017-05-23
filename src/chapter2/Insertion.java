@@ -1,6 +1,5 @@
 package chapter2;
 
-import algs4.In;
 import algs4.StdOut;
 
 import java.util.Comparator;
@@ -9,9 +8,15 @@ import java.util.Comparator;
 /**
  * Created by NanCarp on 2017/5/6.
  */
-public class Example {
+public class Insertion {
     public static void sort(Comparable[] a) {
-
+        // 将a[]按升序排列
+        int N = a.length;
+        for (int i = 1; i < N; i++) {
+            // 将 a[i] 插入到 a[i-1]、a[i-2]、a[i-3]...之中
+            for (int j = i; j > 0 && less(a[j], a[j-1]); j--)
+                exch(a, j, j-1);
+        }
     }
 
     private static boolean less(Comparable v, Comparable w) {
@@ -39,13 +44,13 @@ public class Example {
         return true;
     }
 
-    // 从标准输入读取字符串，将它们排序并输出
+    /*// 从标准输入读取字符串，将它们排序并输出
     public static void main(String[] args) {
         String[] a = In.readStrings();
         sort(a);
         assert isSorted(a);
         show(a);
-    }
+    }*/
 }
 
 

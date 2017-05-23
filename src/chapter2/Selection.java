@@ -1,16 +1,23 @@
 package chapter2;
 
-import algs4.In;
 import algs4.StdOut;
 
 import java.util.Comparator;
 
-
 /**
  * Created by NanCarp on 2017/5/6.
  */
-public class Example {
+public class Selection {
+
+    // 将a[]按升序排列
     public static void sort(Comparable[] a) {
+        int N = a.length;// 数组长度
+        for (int i = 0; i < N; i++){
+            int min = i;
+            for (int j = i+1; j < N; j++)
+                if (less(a[j], a[min])) min = j;
+            exch(a, i, min);
+        }
 
     }
 
@@ -39,17 +46,11 @@ public class Example {
         return true;
     }
 
-    // 从标准输入读取字符串，将它们排序并输出
+    /*// 从标准输入读取字符串，将它们排序并输出
     public static void main(String[] args) {
         String[] a = In.readStrings();
         sort(a);
         assert isSorted(a);
         show(a);
-    }
+    }*/
 }
-
-
-
-
-
-
